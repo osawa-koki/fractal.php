@@ -6,8 +6,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN apt-get update
 
 # Install Apache and PHP
-RUN apt-get install -y apache2 && \
-    apt-get install -y php libapache2-mod-php
+RUN apt-get install -y apache2 php libapache2-mod-php php-gd
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
