@@ -1,4 +1,9 @@
 
-# ヘッダの出力
+<IfModule mod_headers.c>
+  Header set Content-Type "image/png"
+</IfModule>
 
-# キャッシュの設定
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+</IfModule>
