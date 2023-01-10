@@ -41,6 +41,14 @@ if ($threshold <= 0 || $threshold > 1024) {
 // マンデルブロ集合を描写
 $canvas = imagecreatetruecolor($width, $height);
 
+// 色を設定
+$colors = array();
+
+for ($i = 0; $i < $iteration; $i++) {
+  $colors[$i] = imagecolorallocate($canvas, $i % 256, ($i * 2) % 256, ($i * 4) % 256);
+}
+
+// マンデルブロ集合を描写
 for ($y = 0; $y < $height; $y++) {
   for ($x = 0; $x < $width; $x++) {
     $c_re = $x_min + ($x_max - $x_min) * $x / $width;
@@ -48,18 +56,15 @@ for ($y = 0; $y < $height; $y++) {
     $z_re = 0;
     $z_im = 0;
     $i = 0;
+
     while ($i < $iteration && $z_re * $z_re + $z_im * $z_im < $threshold) {
       $tmp = $z_re * $z_re - $z_im * $z_im + $c_re;
       $z_im = 2 * $z_re * $z_im + $c_im;
       $z_re = $tmp;
       $i++;
     }
-    if ($i === $iteration) {
-      $color = imagecolorallocate($canvas, 255, 255, 255);
-    } else {
-      $color = imagecolorallocate($canvas, $i * 255 / $iteration, $i * 255 / $iteration, $i * 255 / $iteration);
-    }
-    imagesetpixel($canvas, $x, $y, $color);
+
+    imagesetpixel($canvas, $x, $y, $colors[$i]);
   }
 }
 
