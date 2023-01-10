@@ -13,10 +13,24 @@ $title = "🐙 Fractal-Drawer 🐙";
 <body>
   <main>
     <h1><?php echo $title; ?></h1>
-    <h2>🐬 マンデルブロ集合 🐬</h2>
-    <iframe src="/canvas/mandelbrot"></iframe>
-    <h2>🐍 ジュリア集合 🐍</h2>
-    <iframe src="/canvas/julia"></iframe>
+    <?php
+    $fractals = array(
+      array(
+        'emoji' => '🐬',
+        'name' => 'マンデルブロ集合',
+        'path' => '/canvas/mandelbrot',
+      ),
+      array(
+        'emoji' => '🐍',
+        'name' => 'ジュリア集合',
+        'path' => '/canvas/julia',
+      ),
+    );
+    foreach ($fractals as $fractal) {
+      echo '<h2>' . $fractal['emoji'] . ' ' . $fractal['name'] . ' ' . $fractal['emoji'] . '</h2>';
+      echo '<iframe src="' . $fractal['path'] . '"></iframe>';
+    }
+    ?>
   </main>
 </body>
 </html>
