@@ -25,6 +25,16 @@ $title = "🐙 Fractal-Drawer 🐙";
         'name' => 'ジュリア集合',
         'path' => '/canvas/julia',
       ),
+      array(
+        'emoji' => '🐋',
+        'name' => 'トライコーン集合',
+        'path' => '/canvas/tricorn',
+      ),
+      array(
+        'emoji' => '🐢',
+        'name' => 'バーニングシップ集合',
+        'path' => '/canvas/burning-ship',
+      ),
     );
     foreach ($fractals as $fractal) {
       echo '<h2>' . $fractal['emoji'] . ' ' . $fractal['name'] . ' ' . $fractal['emoji'] . '</h2>';
