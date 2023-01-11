@@ -68,6 +68,9 @@ for ($y = 0; $y < $height; $y++) {
   }
 }
 
+// ヘッダを出力
+header('Content-Type: image/png');
+
 // 画像を出力
 imagepng($canvas);
 
